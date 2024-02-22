@@ -1,6 +1,11 @@
 package com.ex;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet ;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -21,9 +26,8 @@ import java.util.Set;
 	3-2 > 만약에 Set객체 사이즈가 6이면 반복문 빠져나오기
 	3-3 > 반복문내에서 Set객체 요소추가하기add
 */
-public class CollectionFramework {
-
-	public static void main(String[] args) {
+class SetExample{
+	public void runSetExample() {
 		Set<Integer> set1 = new HashSet<>();
 		set1.add(10);
 		set1.add(20);
@@ -44,6 +48,43 @@ public class CollectionFramework {
 			set3.add(random.nextInt(6)+1);
 		}
 		System.out.println(set3);
+	}
+}
+//Map객체에 요소추가
+class MapExample{
+	public void runMapExample(String key) {
+		Map<String, List<Integer>> map = new HashMap<>();
+		ArrayList<Integer> bList = new ArrayList<Integer>();
+		bList.add(1);
+		bList.add(2);
+		bList.add(3);
+		map.put("a", bList);
+		//Arrays.asList(new int[]{1, 2, 3, 4})));메서드 활용.
+		//배열을 원래 배열이 지원하는 고정 크기 목록으로 변환
+		map.put("b", new ArrayList<>(Arrays.asList(4,5,6,7)));
+		
+		System.out.println(map);
+		//값 꺼내오기
+		if(map.containsKey(key)) {
+			if(key.equals("a")) 
+				System.out.println("a[2] : "+map.get("a").get(2));
+			else if(key.equals("b"))
+				System.out.println("b[3] : "+map.get("b").get(3));
+		}else {
+			System.out.println("존재하지 않는 key");
+		}
+	}
+}
+
+public class CollectionFramework {
+
+	public static void main(String[] args) {
+		//Set
+		SetExample set = new SetExample();
+		set.runSetExample();
+		//Map
+		MapExample map = new MapExample();
+		map.runMapExample(args[0]);
 	}
 
 }
