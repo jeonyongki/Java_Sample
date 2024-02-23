@@ -13,11 +13,12 @@ import java.util.Set;
 public class Example02 {
 
 	public static void main(String[] args) {
-		Map<String, String> map = new HashMap<>();
-		map.put("아메리카노", "americano");
-		map.put("카페라테", "caffe latte");
-		map.put("말차라테", "matcha latte");
-		map.put("바닐라라테", "vanilla latte");
+		Map<String, Integer> map = new HashMap<>();
+		map.put("아메리카노", 2000);
+		map.put("카페라테", 2000);
+		map.put("카푸치노", 3000);
+		map.put("말차라테", 4000);
+		map.put("바닐라라테", 3000);
 		//here
 		Set<String> set = map.keySet();
 		System.out.println(set);
@@ -31,25 +32,25 @@ public class Example02 {
 		Set<String> keyList = map.keySet();
 		System.out.println(keyList);
 		//값의 목록(집합)을 구하자 values()
-		Collection<String> vList = map.values();
+		Collection<Integer> vList = map.values();
 		System.out.println(vList); 
 		//키의 존재여부판단 : containsKey(키)
 		System.out.println("아메리카노 존재?"+map.containsKey("아메리카노"));
 		//값의 존재여부판단 : containsValue(값)
-		System.out.println("caffe latte?"+map.containsValue("caffe latte"));
+		System.out.println("카페라테?"+map.containsValue(2000));
 		System.out.println("------------------------------------");
 		//값을 알고있을때 해당키를 구하시오.
-		//americano의 메뉴 이름을 알고싶다..
+		//Qs? 2000원하는 커피를 알고싶다..
 		//1.값이 맵에 존재하는가?
-		//2.존재한다면 키 집합을 생성
+		//2.존재한다면 키 집합을 생성 
 		//3.키 집합에서 키를 하니씩가져와서 알고있는 값과 비교
 		//4.비교값이 true면 해당 메뉴임.
-		if(map.containsValue("americano")) {
+		if(map.containsValue(2000)) {
 			Set<String> kSet = map.keySet();
 			Iterator<String> key = kSet.iterator();
 			while(key.hasNext()) {
 				String m = key.next();
-				if(map.get(m).equals("americano")) {
+				if(map.get(m).equals(2000)) {
 					System.out.println("메뉴:"+m);
 				}
 			}
